@@ -19,6 +19,4 @@ most important in a tool like this.
 - As a user, I want to be able to add a player to my team
 - As a user, I want to be able to view a list of the players on my team
 - As a user, I want to be able to select a player and view their contract
-- As a user, I want to be able to select a player and add a new contract for that player
-- As a user, I want to be able to remove a player from my team when their contract ends
 - As a user, I want to be able to view a list of the contracts of players on my team
