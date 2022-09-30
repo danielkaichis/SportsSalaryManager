@@ -1,4 +1,4 @@
-# My Personal Project
+# Sports Team Salary Manager
 
 ## Summary
 
