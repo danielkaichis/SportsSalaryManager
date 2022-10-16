@@ -19,12 +19,13 @@ public class SportsTeam {
         return false; // STUB
     }
 
-    // EFFECTS: prints a list of players on the team
-    public void printPlayers() {
-        // STUB
+    public List<Player> getPlayers() {
+        return this.players;
     }
 
-
+    public String getTeamName() {
+        return this.teamName;
+    }
 }
 
 

@@ -12,27 +12,15 @@ public class Player {
         this.age = age;
     }
 
-    // REQUIRES: length >= 0
-    // MODIFIES: this
-    // EFFECTS: extends the length of the players contract and returns the new length
-    public int extendContract(int length) {
-        return 0; //STUB
+    public Contract getContract() {
+        return this.contract;
     }
 
-    // REQUIRES: length >= 0, newSalary >= 0
-    // MODIFIES: this
-    // EFFECTS: extends players contract length, updates their salary to newSalary, and returns the new contract length
-    public int extendContract(int newSalary, int length) {
-        return 0; // STUB
+    public int getAge() {
+        return this.age;
     }
 
-    // EFFECTS: prints the players contract
-    public void printContract() {
-        //STUB
-    }
-
-    // EFFECTS: prints the all of the players information contained in this class
-    public void printPlayerInformation() {
-        // STUB
+    public String getName() {
+        return this.name;
     }
 }
