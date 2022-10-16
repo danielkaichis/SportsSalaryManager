@@ -17,16 +17,21 @@ public class ContractTest {
 
     @Test
     void testConstructor() {
-        //STUB
+        assertEquals(100000, testContract.getSalary());
+        assertEquals(5, testContract.getYears());
     }
 
     @Test
     void testExtendContractWithoutSalary() {
-        //STUB
+        assertEquals(9, testContract.extendContract(4));
+        assertEquals(9, testContract.getYears());
+        assertEquals(100000, testContract.getSalary());
     }
 
     @Test
     void testExtendContractWithNewSalary() {
-        //STUB
+        assertEquals(10, testContract.extendContract(200000, 5));
+        assertEquals(10, testContract.getYears());
+        assertEquals(200000, testContract.getSalary());
     }
 }
