@@ -48,7 +48,14 @@ public class SportsTeam {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: calculates and returns the sum of the salaries of the players on the team. This calculation is done
+    // each time this method is called in case contracts are extended in other classes
     public int getTeamSalary() {
+        this.teamSalary = 0;
+        for (Player player : players) {
+            teamSalary += player.getContract().getSalary();
+        }
         return this.teamSalary;
     }
 
