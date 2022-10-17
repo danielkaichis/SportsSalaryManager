@@ -13,7 +13,7 @@ public class Contract {
         this.years = years;
     }
 
-    // REQUIRES: length > 0
+    // REQUIRES: length >= 0
     // MODIFIES: this
     // EFFECTS: extends the length of the players contract by length and returns the new length
     public int extendContract(int length) {
@@ -21,7 +21,7 @@ public class Contract {
         return this.years;
     }
 
-    // REQUIRES: length > 0, newSalary >= 0
+    // REQUIRES: length >= 0, newSalary >= 0
     // MODIFIES: this
     // EFFECTS: extends players contract length, updates their salary to newSalary, and returns the new contract length
     public int extendContract(int newSalary, int length) {
