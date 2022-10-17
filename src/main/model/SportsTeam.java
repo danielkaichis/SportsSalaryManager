@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a sports team having a list of any number of players, a name, the sport the team plays, a salary cap
+// (aka maximum salary), and a total salary (sum of players salaries).
 public class SportsTeam {
     private List<Player> players;
     private String teamName;
@@ -13,7 +15,10 @@ public class SportsTeam {
     public static final int FOOTBALL_SALARY_CAP = 208200000;
     public static final int BASKETBALL_SALARY_CAP = 134000000;
 
+    // REQUIRES: sport is one of "hockey", "football", or "basketball"
     // MODIFIES: this
+    // EFFECTS: initializes empty array of players, sets teamName and sport, and sets the salary cap based on which
+    // sport the team plays
     public SportsTeam(String name, String sport) {
         players = new ArrayList<Player>();
         this.teamName = name;
@@ -63,11 +68,3 @@ public class SportsTeam {
         return this.salaryCap;
     }
 }
-
-
-
-//- As a user, I want to be able to create a team for a specified sport
-//        - As a user, I want to be able to add a player to my team
-//        - As a user, I want to be able to view a list of the players on my team
-//        - As a user, I want to be able to select a player and view their contract
-//        - As a user, I want to be able to view a list of the contracts of players on my team

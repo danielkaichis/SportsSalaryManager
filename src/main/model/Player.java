@@ -6,6 +6,7 @@ public class Player {
     private Contract contract;
 
     // MODIFIES: this
+    // EFFECTS: sets the players contract, name, and age
     public Player(Contract contract, String name, int age) {
         this.contract = contract;
         this.name = name;

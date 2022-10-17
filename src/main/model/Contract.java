@@ -6,6 +6,7 @@ public class Contract {
 
     // REQUIRES: salary >= 0, years >= 0;
     // MODIFIES: this
+    // EFFECTS: sets contract salary and years
     public Contract(int salary, int years) {
         this.salary = salary;
         this.years = years;
