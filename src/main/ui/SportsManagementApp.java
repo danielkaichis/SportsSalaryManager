@@ -149,13 +149,17 @@ public class SportsManagementApp {
             System.out.println("\nYears to extend " + player.getName() + "'s contract by: ");
             int years = input.nextInt();
             if (response.equals("y")) {
-                System.out.println("\nNew salary: ");
+                int maxSalary = team.getSalaryCap() - team.getTeamSalary() + player.getContract().getSalary();
+                System.out.println("\nNew salary (max " + maxSalary + "): ");
                 int salary = input.nextInt();
+                while (salary > maxSalary) {
+                    System.out.println("Invalid Salary, please try again: ");
+                    salary = input.nextInt();
+                }
                 player.getContract().extendContract(salary, years);
             } else {
                 player.getContract().extendContract(years);
             }
-            System.out.println(player.getName() + "'s new contract: ");
             viewPlayerContract(player);
         }
     }
@@ -181,6 +185,7 @@ public class SportsManagementApp {
     // REQUIRES: player is not null
     // EFFECTS: prints the contract information of a player
     private void viewPlayerContract(Player player) {
+        System.out.println(player.getName() + "'s Contract");
         System.out.println("Salary: $" + player.getContract().getSalary()
                 + ", Years: " + player.getContract().getYears());
     }
@@ -188,7 +193,6 @@ public class SportsManagementApp {
     // EFFECTS: prints the contract information for all players on the team
     private void viewAllPlayerContracts() {
         for (Player player : team.getPlayers()) {
-            System.out.println(player.getName() + "'s Contract");
             viewPlayerContract(player);
         }
         System.out.println("Team has spent $" + team.getTeamSalary()

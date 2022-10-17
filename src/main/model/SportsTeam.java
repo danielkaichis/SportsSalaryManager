@@ -17,18 +17,20 @@ public class SportsTeam {
 
     // REQUIRES: sport is one of "hockey", "football", or "basketball"
     // MODIFIES: this
-    // EFFECTS: initializes empty array of players, sets teamName and sport, and sets the salary cap based on which
-    // sport the team plays
+    // EFFECTS: initializes empty array of players, sets teamName, sets the salary cap based on which
+    // sport the team plays, and sets the sport variable to the full name of the users inputted sport.
     public SportsTeam(String name, String sport) {
         players = new ArrayList<Player>();
         this.teamName = name;
-        this.sport = sport;
 
         if (sport.equals("hockey")) {
+            this.sport = "hockey";
             this.salaryCap = HOCKEY_SALARY_CAP;
         } else if (sport.equals("football")) {
+            this.sport = "football";
             this.salaryCap = FOOTBALL_SALARY_CAP;
         } else {
+            this.sport = "basketball";
             this.salaryCap = BASKETBALL_SALARY_CAP;
         }
     }

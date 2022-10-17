@@ -25,7 +25,6 @@ public class Contract {
     // EFFECTS: extends players contract length, updates their salary to newSalary, and returns the new contract length
     public int extendContract(int newSalary, int length) {
         extendContract(length);
-
         this.salary = newSalary;
         return this.years;
     }
