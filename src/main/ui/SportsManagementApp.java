@@ -20,7 +20,7 @@ public class SportsManagementApp {
     // EFFECTS: runs the application until the user chooses to quit
     private void runSportsManager() {
         boolean keepRunning = true;
-        String command = null;
+        String command;
 
         init();
 
@@ -41,8 +41,9 @@ public class SportsManagementApp {
     // EFFECTS: gets team information from the user and initializes team information
     void init() {
         String teamName;
-        String sport = "";
+        String sport;
         input = new Scanner(System.in);
+        input.useDelimiter("\n");
         System.out.println("Enter the name of your team: ");
         teamName = input.next();
         displaySportMenu();
@@ -144,7 +145,7 @@ public class SportsManagementApp {
             System.out.println("\nWould you like to change " + player.getName() + "'s salary from "
                     + player.getContract().getSalary() + "? [y/n]");
             String response = input.next();
-            response.toLowerCase();
+            response = response.toLowerCase();
             System.out.println("\nYears to extend " + player.getName() + "'s contract by: ");
             int years = input.nextInt();
             if (response.equals("y")) {
@@ -190,6 +191,8 @@ public class SportsManagementApp {
             System.out.println(player.getName() + "'s Contract");
             viewPlayerContract(player);
         }
+        System.out.println("Team has spent $" + team.getTeamSalary()
+                + " of the $" + team.getSalaryCap() + " " + team.getSport() + " salary cap.");
     }
 
     // MODIFIES: this
@@ -198,7 +201,7 @@ public class SportsManagementApp {
     private Player selectPlayer() {
         System.out.println("\nEnter the name of the player: ");
         String playerName = input.next();
-        playerName.toLowerCase();
+        playerName = playerName.toLowerCase();
         for (Player player : team.getPlayers()) {
             if (player.getName().toLowerCase().equals(playerName)) {
                 return player;

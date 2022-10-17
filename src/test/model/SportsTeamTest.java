@@ -88,4 +88,18 @@ class SportsTeamTest {
         assertFalse(hockeyTeam.addPlayer(player4));
     }
 
+    @Test
+    void testGetTeamSalary() {
+        hockeyTeam.addPlayer(player1);
+        assertEquals(100000, hockeyTeam.getTeamSalary());
+    }
+
+    @Test
+    void testGetTeamSalaryAfterContractExtension() {
+        hockeyTeam.addPlayer(player1);
+        assertEquals(100000, hockeyTeam.getTeamSalary());
+        hockeyTeam.getPlayers().get(0).getContract().extendContract(150000, 2);
+        assertEquals(150000, hockeyTeam.getTeamSalary());
+    }
+
 }
