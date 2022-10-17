@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
+// Test for all methods in the Contract class, also includes fields to effectively test these methods
 public class ContractTest {
     private Contract testContract;
 

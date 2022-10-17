@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test for all methods in the Player class, also includes fields to effectively test these methods
 public class PlayerTest {
     private Contract testContract;
     private Player testPlayer;

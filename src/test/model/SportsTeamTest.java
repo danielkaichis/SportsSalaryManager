@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+// Test for all methods in the SportsTeam class, also includes fields to effectively test these methods
 class SportsTeamTest {
     private SportsTeam hockeyTeam;
     private SportsTeam basketballTeam;
