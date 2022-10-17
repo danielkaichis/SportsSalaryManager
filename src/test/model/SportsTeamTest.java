@@ -86,6 +86,7 @@ class SportsTeamTest {
     void testAddPlayerOverSalaryCap() {
         assertTrue(hockeyTeam.addPlayer(player1));
         assertFalse(hockeyTeam.addPlayer(player4));
+        assertTrue(hockeyTeam.getTeamSalary() < hockeyTeam.getSalaryCap());
     }
 
     @Test
