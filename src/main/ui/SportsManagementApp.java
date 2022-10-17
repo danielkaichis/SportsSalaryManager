@@ -44,7 +44,7 @@ public class SportsManagementApp {
         String sport;
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-        System.out.println("Enter the name of your team: ");
+        System.out.println("Enter the name of your team to create: ");
         teamName = input.next();
         displaySportMenu();
         sport = input.next();
