@@ -1,5 +1,6 @@
 package model;
 
+// Represents the contract of a player on a sports team with a salary and number of years the contract will last
 public class Contract {
     private int salary;
     private int years;

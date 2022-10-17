@@ -1,5 +1,6 @@
 package model;
 
+// Represents a player on a sports team with a name, age, and contract
 public class Player {
     private String name;
     private int age;
