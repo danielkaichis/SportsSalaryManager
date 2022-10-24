@@ -17,7 +17,7 @@ import org.json.*;
 // Code specific to this application may be similar to this source as well but has been modified for the purpose
 // of this project.
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads a sports team from JSON data stored in file
 public class JsonReader {
     private String source;
 
