@@ -20,3 +20,6 @@ most important in a tool like this.
 - As a user, I want to be able to view a list of the players on my team
 - As a user, I want to be able to select a player and view their contract
 - As a user, I want to be able to view a list of the contracts of players on my team
+- As a user, when I select the quit option from the application menu, I want to be reminded to save my 
+team to a file and have the option to do so or not
+- As a user, when I start the application, I want to be given the option to load my team from a file
