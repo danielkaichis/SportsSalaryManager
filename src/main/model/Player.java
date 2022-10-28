@@ -5,8 +5,8 @@ import persistence.Writable;
 
 // Represents a player on a sports team with a name, age, and contract
 public class Player implements Writable {
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
     private Contract contract;
 
     // MODIFIES: this

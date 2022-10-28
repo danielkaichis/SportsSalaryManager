@@ -1,12 +1,3 @@
 {
-    "players": [{
-        "contract": {
-            "salary": 555555,
-            "years": 46
-        },
-        "name": "John",
-        "age": 23
-    }],
-    "name": "Daniel Team",
-    "sport": "hockey"
+
 }

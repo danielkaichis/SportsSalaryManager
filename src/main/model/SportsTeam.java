@@ -11,9 +11,9 @@ import java.util.List;
 // (aka maximum salary), and a total salary (sum of players salaries).
 public class SportsTeam implements Writable {
     private List<Player> players;
-    private String teamName;
-    private String sport;
-    private int salaryCap;
+    private final String teamName;
+    private final String sport;
+    private final int salaryCap;
     private int teamSalary;
     private static final int HOCKEY_SALARY_CAP = 81500000;
     public static final int FOOTBALL_SALARY_CAP = 208200000;
@@ -24,7 +24,7 @@ public class SportsTeam implements Writable {
     // EFFECTS: initializes empty array of players, sets teamName, sets the salary cap based on which
     // sport the team plays, and sets the sport variable to the full name of the users inputted sport.
     public SportsTeam(String name, String sport) {
-        players = new ArrayList<Player>();
+        players = new ArrayList<>();
         this.teamName = name;
 
         if (sport.equals("hockey")) {

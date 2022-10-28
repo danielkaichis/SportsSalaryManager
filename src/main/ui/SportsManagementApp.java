@@ -108,7 +108,7 @@ public class SportsManagementApp {
         System.out.println("\nSelect from:");
         System.out.println("a -> Add player");
         System.out.println("e -> Extend one players contract");
-        System.out.println("p -> View a list of players");
+        System.out.println("l -> View a list of players");
         System.out.println("v -> View the contract of one player");
         System.out.println("c -> View a list of the contracts of all players");
         System.out.println("s -> Save team to file");
@@ -122,7 +122,7 @@ public class SportsManagementApp {
             addPlayer();
         } else if (command.equals("e")) {
             extendPlayer();
-        } else if (command.equals("p")) {
+        } else if (command.equals("l")) {
             viewPlayers();
         } else if (command.equals("v")) {
             viewPlayerContract();
