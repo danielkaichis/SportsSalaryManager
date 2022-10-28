@@ -45,6 +45,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    // MODIFIES: team
     // EFFECTS: parses team from JSON object and returns it
     private SportsTeam parseSportsTeam(JSONObject jsonObject) {
         String name = jsonObject.getString("name");

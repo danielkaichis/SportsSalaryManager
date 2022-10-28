@@ -165,7 +165,10 @@ public class SportsManagementApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: prompts user to select a player and, if the player exists on the team, extends their contract
+    // EFFECTS: prompts user to select a player and, if the player exists on the team, asks the user to input
+    // new contract details. if the user chooses to change the player's salary, prompts them to enter a new value.
+    // If the salary is invalid (takes the team over the salary cap), continues to prompt the user until they
+    // enter a valid salary and then extends the players contract, and prints the players contract.
     private void extendPlayer() {
         Player player;
         player = selectPlayer();
@@ -268,6 +271,7 @@ public class SportsManagementApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: asks the user if they want to save their team, and saves it to a file if they do
     private void remindUserToSave() {
         System.out.println("Would you like to save your team before you quit? [y/n]: ");

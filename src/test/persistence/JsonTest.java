@@ -5,6 +5,7 @@ import model.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Helper class for reader and writer tests
 public class JsonTest {
     // based on the supplied workroom example for CPSC 210
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

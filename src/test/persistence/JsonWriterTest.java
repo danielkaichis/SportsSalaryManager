@@ -12,6 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// Test for all methods in the JsonWriter class, also includes fields to effectively test these methods
 public class JsonWriterTest extends JsonTest {
     private Player player1;
     private Player player2;

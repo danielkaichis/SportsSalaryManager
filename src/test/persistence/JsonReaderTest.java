@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test for all methods in the JsonReader class, also includes fields to effectively test these methods
 public class JsonReaderTest extends JsonTest {
     private Contract contract1;
     private Contract contract2;
