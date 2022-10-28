@@ -28,7 +28,7 @@ public class JsonReader {
 
     // EFFECTS: reads sports team from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public SportsTeam read() throws IOException {
+    public SportsTeam read() throws IOException, JSONException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseSportsTeam(jsonObject);
@@ -71,7 +71,7 @@ public class JsonReader {
         int age = jsonObject.getInt("age");
         JSONObject contractObject = jsonObject.getJSONObject("contract");
         Contract contract = parseContract(contractObject);
-        Player player = new Player(contract, name, age);
+        Player player = new Player(name, age, contract);
         team.addPlayer(player);
     }
 

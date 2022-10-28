@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents the contract of a player on a sports team with a salary and number of years the contract will last
-public class Contract {
+public class Contract implements Writable {
     private int salary;
     private int years;
 
@@ -36,5 +39,15 @@ public class Contract {
 
     public int getYears() {
         return this.years;
+    }
+
+    // Based on the supplied workroom example for CPSC 210
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("salary", salary);
+        json.put("years", years);
+        return json;
     }
 }

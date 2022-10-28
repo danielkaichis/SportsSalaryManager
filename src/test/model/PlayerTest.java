@@ -13,7 +13,7 @@ public class PlayerTest {
     @BeforeEach
     void runBefore() {
         testContract = new Contract(100000, 5);
-        testPlayer = new Player(testContract, "Wayne Gretzky", 25);
+        testPlayer = new Player("Wayne Gretzky", 25, testContract);
     }
 
     @Test

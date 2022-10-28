@@ -24,10 +24,10 @@ class SportsTeamTest {
         footballTeam = new SportsTeam("Test team", "football");
         contract = new Contract(100000, 5);
         maxContract = new Contract(81500000, 5);
-        player1 = new Player(contract, "Player1", 25);
-        player2 = new Player(contract, "Player2", 26);
-        player3 = new Player(contract, "Player3", 27);
-        player4 = new Player(maxContract, "Player 4", 30);
+        player1 = new Player("Player1", 25, contract);
+        player2 = new Player("Player2", 26, contract);
+        player3 = new Player("Player3", 27, contract);
+        player4 = new Player("Player 4", 30, maxContract);
     }
 
     @Test

@@ -1,11 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a sports team having a list of any number of players, a name, the sport the team plays, a salary cap
 // (aka maximum salary), and a total salary (sum of players salaries).
-public class SportsTeam {
+public class SportsTeam implements Writable {
     private List<Player> players;
     private String teamName;
     private String sport;
@@ -75,5 +79,26 @@ public class SportsTeam {
 
     public int getSalaryCap() {
         return this.salaryCap;
+    }
+
+    // Based on the supplied workroom example for CPSC 210
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", teamName);
+        json.put("sport", sport);
+        json.put("players", playersToJson());
+        return json;
+    }
+
+    // EFFECTS: returns players on this team as JSON array
+    private JSONArray playersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Player p : players) {
+            jsonArray.put(p.toJson());
+        }
+        return jsonArray;
     }
 }
