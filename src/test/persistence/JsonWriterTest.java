@@ -82,26 +82,4 @@ public class JsonWriterTest extends JsonTest {
             fail("Exception should not have been thrown");
         }
     }
-
-//    {
-//        "players": [{
-//        "contract": {
-//            "salary": 2000000,
-//                    "years": 5
-//        },
-//        "name": "John",
-//                "age": 23
-//    },
-//        {
-//            "contract": {
-//            "salary": 5000000,
-//                    "years": 8
-//        },
-//            "name": "Steve",
-//                "age": 26
-//        }
-//  ],
-//        "sport": "hockey",
-//            "name": "Test team"
-//    }
 }
