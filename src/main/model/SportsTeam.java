@@ -26,15 +26,13 @@ public class SportsTeam implements Writable {
     public SportsTeam(String name, String sport) {
         players = new ArrayList<>();
         this.teamName = name;
+        this.sport = sport;
 
-        if (sport.equals("hockey")) {
-            this.sport = "hockey";
+        if (sport.equals("Hockey")) {
             this.salaryCap = HOCKEY_SALARY_CAP;
-        } else if (sport.equals("football")) {
-            this.sport = "football";
+        } else if (sport.equals("Football")) {
             this.salaryCap = FOOTBALL_SALARY_CAP;
         } else {
-            this.sport = "basketball";
             this.salaryCap = BASKETBALL_SALARY_CAP;
         }
     }

@@ -1,3 +1,22 @@
 {
-
+    "players": [
+        {
+            "contract": {
+                "salary": 12345,
+                "years": 14
+            },
+            "name": "john",
+            "age": 1
+        },
+        {
+            "contract": {
+                "salary": 1,
+                "years": 1
+            },
+            "name": "player",
+            "age": 1
+        }
+    ],
+    "name": "my team",
+    "sport": "Hockey"
 }
