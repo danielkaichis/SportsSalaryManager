@@ -23,3 +23,12 @@ most important in a tool like this.
 - As a user, when I select the quit option from the application menu, I want to be reminded to save my 
 team to a file and have the option to do so or not
 - As a user, when I start the application, I want to be given the option to load my team from a file
+
+# Instructions for Grader
+
+- You can generate the first required event related to adding Xs to a Y by loading/creating a team and 
+clicking add player from the first page.
+- You can generate the second required event related to adding Xs to a Y by 
+- You can locate my visual component by...
+- You can save the state of my application by...
+- You can reload the state of my application by...

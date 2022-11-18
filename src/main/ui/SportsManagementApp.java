@@ -9,7 +9,6 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +26,7 @@ public class SportsManagementApp extends JFrame {
     private JPanel teamList;
 
     // EFFECTS: runs the sports manager application
+    // TODO
     public SportsManagementApp() throws FileNotFoundException {
         initFields();
         initGraphics();
@@ -41,7 +41,7 @@ public class SportsManagementApp extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: TODO
     void initGraphics() {
         setTitle("Sports Management App");
         setLayout(new BorderLayout());
@@ -57,49 +57,38 @@ public class SportsManagementApp extends JFrame {
         setVisible(true);
     }
 
+    // TODO
     void runSportsManager() {
         initPersistence();
         viewTeam();
         displayMenu();
     }
 
-    void initPersistence() {
+    // TODO
+    private void initPersistence() {
         JMenuBar persistence = new JMenuBar();
         JMenu saveLoadMenu = new JMenu("Save/Load");
-        JMenuItem save = new JMenuItem(new SaveActionHandler());
+        JMenuItem save = new JMenuItem();
+        save.addActionListener(e -> saveTeam());
         save.setText("Save");
         saveLoadMenu.add(save);
-        JMenuItem load = new JMenuItem(new LoadActionHandler());
+        JMenuItem load = new JMenuItem();
+        load.addActionListener(e -> loadTeam());
         load.setText("Load");
         saveLoadMenu.add(load);
         persistence.add(saveLoadMenu);
         setJMenuBar(persistence);
     }
 
-    private class SaveActionHandler extends AbstractAction {
-        // EFFECTS: saves the users team when the save button is clicked
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            saveTeam();
-        }
-    }
-
-    private class LoadActionHandler extends AbstractAction {
-        // EFFECTS: loads the users team when the load button is clicked
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            loadTeam();
-        }
-    }
-
-    void viewTeam() {
+    // TODO
+    private void viewTeam() {
         teamList.removeAll();
         JLabel temp;
         for (Player player : team.getPlayers()) {
             temp = new JLabel();
             temp.setText("Name: " + player.getName() + ", Age: " + player.getAge());
             JButton viewContract = new JButton("View Contract");
-            viewContract.addActionListener(e -> printPlayerContract(player));
+            viewContract.addActionListener(e -> viewPlayerContract(player));
             teamList.add(temp);
             teamList.add(viewContract);
         }
@@ -109,13 +98,7 @@ public class SportsManagementApp extends JFrame {
         refreshTeamList();
     }
 
-    private void printPlayerContract(Player player) {
-        teamList.removeAll();
-        viewPlayerContract(player);
-        refreshTeamList();
-    }
-
-    // MODIFIES: this
+    // MODIFIES: this, TODO
     // EFFECTS: if user chooses to load from file, loads team from file,
     // otherwise gets team information from the user and initializes team.
     void initTeam() {
@@ -142,12 +125,12 @@ public class SportsManagementApp extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates a new team using the users input. Continues to prompt user to enter a sport until their
-    // input is valid
+    // EFFECTS: creates a new team with the teamName and sport .
     private void createTeam(String teamName, String sport) {
         team = new SportsTeam(teamName, sport);
     }
 
+    // TODO
     // EFFECTS: displays menu options to the user
     private void displayMenu() {
         JPanel menuPanel = new JPanel();
@@ -164,18 +147,20 @@ public class SportsManagementApp extends JFrame {
         add(menuPanel, BorderLayout.SOUTH);
     }
 
+    // TODO
     public void addPlayer() {
         addPlayerPopup();
         viewTeam();
         refreshTeamList();
     }
 
+    // TODO
     private void refreshTeamList() {
         teamList.setVisible(false);
         teamList.setVisible(true);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, TODO
     // EFFECTS: adds a new player to the team
     private void addPlayerPopup() {
         JTextField nameInput = new JTextField(10);
@@ -200,7 +185,7 @@ public class SportsManagementApp extends JFrame {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, TODO
     // EFFECTS: creates a new contract based on user input and returns that contract
     private Contract signContract() {
         Contract contract;
@@ -219,7 +204,7 @@ public class SportsManagementApp extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: prompts user to select a player and, if the player exists on the team, asks the user to input
+    // EFFECTS: TODO, prompts user to select a player and, if the player exists on the team, asks the user to input
     // new contract details. if the user chooses to change the player's salary, prompts them to enter a new value.
     // If the salary is invalid (takes the team over the salary cap), continues to prompt the user until they
     // enter a valid salary and then extends the players contract, and prints the players contract.
@@ -250,6 +235,7 @@ public class SportsManagementApp extends JFrame {
         refreshTeamList();
     }
 
+    // TODO
     private int validateSalary(Player player, int salary) {
         int maxSalary = team.getSalaryCap() - team.getTeamSalary() + player.getContract().getSalary();
         while (salary > maxSalary) {
@@ -259,7 +245,7 @@ public class SportsManagementApp extends JFrame {
         return salary;
     }
 
-    // REQUIRES: player is not null
+    // REQUIRES: player is not null, TODO
     // EFFECTS: prints the contract information of a player
     private void viewPlayerContract(Player player) {
         teamList.removeAll();
@@ -281,6 +267,7 @@ public class SportsManagementApp extends JFrame {
         refreshTeamList();
     }
 
+    // TODO
     // EFFECTS: prints the contract information for all players on the team
     private void viewAllPlayerContracts() {
         teamList.removeAll();
@@ -295,6 +282,7 @@ public class SportsManagementApp extends JFrame {
         refreshTeamList();
     }
 
+    // TODO
     // EFFECTS: saves the team to file
     private void saveTeam() {
         try {
@@ -307,11 +295,13 @@ public class SportsManagementApp extends JFrame {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, TODO
     // EFFECTS: loads team from file
     private void loadTeam() {
         try {
             team = jsonReader.read();
+            viewTeam();
+            refreshTeamList();
             System.out.println("Loaded team " + team.getTeamName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
@@ -321,8 +311,7 @@ public class SportsManagementApp extends JFrame {
         }
     }
 
-    // EFFECTS: Monitors when the close button is clicked and prompts the user to save their team when
-    // that occurs.
+    // EFFECTS: Monitors when the close button is clicked and prompts the user to save their team when that occurs.
     protected void processWindowEvent(WindowEvent e) {
         super.processWindowEvent(e);
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
@@ -331,10 +320,8 @@ public class SportsManagementApp extends JFrame {
                     null, null, null);
             if (exit == JOptionPane.YES_OPTION) {
                 saveTeam();
-                System.exit(0);
-            } else {
-                System.exit(0);
             }
+            System.exit(0);
         }
     }
 }

@@ -19,9 +19,9 @@ class SportsTeamTest {
 
     @BeforeEach
     void runBefore() {
-        hockeyTeam = new SportsTeam("Test team", "hockey");
-        basketballTeam = new SportsTeam("Test team", "basketball");
-        footballTeam = new SportsTeam("Test team", "football");
+        hockeyTeam = new SportsTeam("Test team", "Hockey");
+        basketballTeam = new SportsTeam("Test team", "Basketball");
+        footballTeam = new SportsTeam("Test team", "Football");
         contract = new Contract(100000, 5);
         maxContract = new Contract(81500000, 5);
         player1 = new Player("Player1", 25, contract);
@@ -34,21 +34,21 @@ class SportsTeamTest {
     void testConstructorHockey() {
         assertEquals(0, hockeyTeam.getPlayers().size());
         assertEquals("Test team", hockeyTeam.getTeamName());
-        assertEquals("hockey", hockeyTeam.getSport());
+        assertEquals("Hockey", hockeyTeam.getSport());
     }
 
     @Test
     void testConstructorBasketball() {
         assertEquals(0, basketballTeam.getPlayers().size());
         assertEquals("Test team", basketballTeam.getTeamName());
-        assertEquals("basketball", basketballTeam.getSport());
+        assertEquals("Basketball", basketballTeam.getSport());
     }
 
     @Test
     void testConstructorFootball() {
         assertEquals(0, footballTeam.getPlayers().size());
         assertEquals("Test team", footballTeam.getTeamName());
-        assertEquals("football", footballTeam.getSport());
+        assertEquals("Football", footballTeam.getSport());
     }
 
     @Test
@@ -85,6 +85,7 @@ class SportsTeamTest {
     @Test
     void testAddPlayerOverSalaryCap() {
         assertTrue(hockeyTeam.addPlayer(player1));
+        System.out.println(hockeyTeam.getSalaryCap());
         assertFalse(hockeyTeam.addPlayer(player4));
         assertTrue(hockeyTeam.getTeamSalary() < hockeyTeam.getSalaryCap());
     }
