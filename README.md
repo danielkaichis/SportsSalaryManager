@@ -26,9 +26,13 @@ team to a file and have the option to do so or not
 
 # Instructions for Grader
 
-- You can generate the first required event related to adding Xs to a Y by loading/creating a team and 
+- You can generate the first required event related to adding players to a team by loading/creating a team and 
 clicking add player from the first page.
-- You can generate the second required event related to adding Xs to a Y by 
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+- You can generate the second required event related to adding players to a team by clicking the view all 
+contracts button. This will display a more detailed view of all the players that have been added to the users team. 
+- You can locate my visual component by clicking view contract of one player, or by clicking view all contracts.
+The images are the dollar signs beside each contract.
+- You can save the state of my application by clicking the save/load button in the top left corner and then 
+clicking save, or by hiting the close button, where you will be prompted by a popup to save your team.
+- You can reload the state of my application by clicking yes to the first popup that prompts the user to load a team
+when the application starts, or at any time by clicking the save/load button and then clicking load from the main page.

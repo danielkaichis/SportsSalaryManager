@@ -23,10 +23,10 @@ public class SportsManagementApp extends JFrame {
     private SportsTeam team;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private JPanel teamList;
+    private JPanel mainPanel;
 
-    // EFFECTS: runs the sports manager application
-    // TODO
+    // MODIFIES: this
+    // EFFECTS: runs the sports manager application by initializing fields and graphics
     public SportsManagementApp() throws FileNotFoundException {
         initFields();
         initGraphics();
@@ -37,11 +37,12 @@ public class SportsManagementApp extends JFrame {
     void initFields() {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        teamList = new JPanel();
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
     }
 
     // MODIFIES: this
-    // EFFECTS: TODO
+    // EFFECTS: sets JFrame values, inits team, and runs the application
     void initGraphics() {
         setTitle("Sports Management App");
         setLayout(new BorderLayout());
@@ -57,14 +58,17 @@ public class SportsManagementApp extends JFrame {
         setVisible(true);
     }
 
-    // TODO
-    void runSportsManager() {
+    // MODIFIES: this
+    // EFFECTS: initializes persistence gui, displays the team on the landing page, and
+    // displays the menu buttons to the user
+    private void runSportsManager() {
         initPersistence();
         viewTeam();
         displayMenu();
     }
 
-    // TODO
+    // MODIFIES: this
+    // EFFECTS: adds menu bar to this with save and load buttons for the user to save and load their team
     private void initPersistence() {
         JMenuBar persistence = new JMenuBar();
         JMenu saveLoadMenu = new JMenu("Save/Load");
@@ -80,25 +84,7 @@ public class SportsManagementApp extends JFrame {
         setJMenuBar(persistence);
     }
 
-    // TODO
-    private void viewTeam() {
-        teamList.removeAll();
-        JLabel temp;
-        for (Player player : team.getPlayers()) {
-            temp = new JLabel();
-            temp.setText("Name: " + player.getName() + ", Age: " + player.getAge());
-            JButton viewContract = new JButton("View Contract");
-            viewContract.addActionListener(e -> viewPlayerContract(player));
-            teamList.add(temp);
-            teamList.add(viewContract);
-        }
-        JLabel image = new JLabel(new ImageIcon("data/splashimage.jpg"));
-        teamList.add(image);
-        add(teamList);
-        refreshTeamList();
-    }
-
-    // MODIFIES: this, TODO
+    // MODIFIES: this
     // EFFECTS: if user chooses to load from file, loads team from file,
     // otherwise gets team information from the user and initializes team.
     void initTeam() {
@@ -130,8 +116,38 @@ public class SportsManagementApp extends JFrame {
         team = new SportsTeam(teamName, sport);
     }
 
-    // TODO
-    // EFFECTS: displays menu options to the user
+    // MODIFIES: this
+    // EFFECTS: clears the mainPanel and prints each player's information to the screen with a button
+    // to view each player's contract.
+    private void viewTeam() {
+        mainPanel.removeAll();
+        JLabel temp;
+        JPanel tempPanel;
+        for (Player player : team.getPlayers()) {
+            temp = new JLabel();
+            tempPanel = new JPanel();
+            tempPanel.setMaximumSize(new Dimension(WIDTH, 50));
+            temp.setText("Name: " + player.getName() + ", Age: " + player.getAge());
+            JButton viewContract = new JButton("View Contract");
+            viewContract.addActionListener(e -> clearPanelAndViewContract(player));
+            tempPanel.add(temp);
+            tempPanel.add(viewContract);
+            mainPanel.add(tempPanel);
+        }
+        add(mainPanel);
+        refreshMainPanel();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: clears the mainPanel and prints the single player's contract to the screen.
+    private void clearPanelAndViewContract(Player player) {
+        mainPanel.removeAll();
+        viewPlayerContract(player);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: displays buttons for menu options at the bottom of this
+    // Adds actions listeners to each button to perform the corresponding action when the user presses them.
     private void displayMenu() {
         JPanel menuPanel = new JPanel();
         menuPanel.setSize(new Dimension(100, 100));
@@ -147,21 +163,24 @@ public class SportsManagementApp extends JFrame {
         add(menuPanel, BorderLayout.SOUTH);
     }
 
-    // TODO
+    // MODIFIES: this
+    // EFFECTS: prompts the user to add a player with a popup, then refreshes the team in mainPanel by calling viewTeam,
+    // and refreshes the mainPanel to show the added player.
     public void addPlayer() {
         addPlayerPopup();
         viewTeam();
-        refreshTeamList();
+        refreshMainPanel();
     }
 
-    // TODO
-    private void refreshTeamList() {
-        teamList.setVisible(false);
-        teamList.setVisible(true);
+    // MODIFIES: this
+    // EFFECTS: refreshes the mainPanel by setting its visibility to false and then true so changes will be rendered.
+    private void refreshMainPanel() {
+        mainPanel.setVisible(false);
+        mainPanel.setVisible(true);
     }
 
-    // MODIFIES: this, TODO
-    // EFFECTS: adds a new player to the team
+    // MODIFIES: this
+    // EFFECTS: prompts the user to enter player information and adds the new player to the team
     private void addPlayerPopup() {
         JTextField nameInput = new JTextField(10);
         JTextField ageInput = new JTextField(5);
@@ -185,7 +204,7 @@ public class SportsManagementApp extends JFrame {
         }
     }
 
-    // MODIFIES: this, TODO
+    // MODIFIES: this
     // EFFECTS: creates a new contract based on user input and returns that contract
     private Contract signContract() {
         Contract contract;
@@ -204,10 +223,11 @@ public class SportsManagementApp extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: TODO, prompts user to select a player and, if the player exists on the team, asks the user to input
-    // new contract details. if the user chooses to change the player's salary, prompts them to enter a new value.
-    // If the salary is invalid (takes the team over the salary cap), continues to prompt the user until they
-    // enter a valid salary and then extends the players contract, and prints the players contract.
+    // REQUIRES: player is not null
+    // EFFECTS: prompts the user to change the inputted players contract. if the user chooses to change the
+    // player's salary, prompts them to enter a new value. If the salary is invalid (takes the team over
+    // the salary cap), continues to prompt the user until they enter a valid salary and
+    // then extends the players contract, and prints the players contract to the screen.
     private void extendPlayer(Player player) {
         JTextField lengthInput = new JTextField(5);
         JTextField salaryInput = new JTextField(10);
@@ -231,11 +251,14 @@ public class SportsManagementApp extends JFrame {
                     "Extend Contract", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             player.getContract().extendContract(Integer.parseInt(lengthInput.getText()));
         }
+        mainPanel.removeAll();
         viewPlayerContract(player);
-        refreshTeamList();
+        refreshMainPanel();
     }
 
-    // TODO
+    // REQUIRES: player is not null, salary is positive
+    // EFFECTS: if players new salary puts the team over the salary cap, prompts the user to enter a new salary with
+    // a popup input and returns the new salary once a valid salary is inputted.
     private int validateSalary(Player player, int salary) {
         int maxSalary = team.getSalaryCap() - team.getTeamSalary() + player.getContract().getSalary();
         while (salary > maxSalary) {
@@ -245,68 +268,84 @@ public class SportsManagementApp extends JFrame {
         return salary;
     }
 
-    // REQUIRES: player is not null, TODO
-    // EFFECTS: prints the contract information of a player
+    // REQUIRES: player is not null
+    // EFFECTS: adds the contract information of a player to the mainPanel and refreshes mainPanel
+    // so changes are reflected to the user.
     private void viewPlayerContract(Player player) {
-        teamList.removeAll();
+        JPanel panel = new JPanel();
+        panel.setMaximumSize(new Dimension(WIDTH, 50));
         ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("data/money.png")
-                .getImage().getScaledInstance(100, 120, Image.SCALE_DEFAULT));
+                .getImage().getScaledInstance(25, 40, Image.SCALE_DEFAULT));
         JLabel imageLabel1 = new JLabel(imageIcon1);
-        teamList.add(imageLabel1);
+        panel.add(imageLabel1);
         JLabel temp = new JLabel();
         temp.setText(player.getName() + ": Salary: $" + player.getContract().getSalary()
                 + ", Years: " + player.getContract().getYears());
         JButton extendContract = new JButton("Extend Contract");
         extendContract.addActionListener(e -> extendPlayer(player));
-        teamList.add(temp);
-        teamList.add(extendContract);
+        panel.add(temp);
+        panel.add(extendContract);
         ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("data/money.png")
-                .getImage().getScaledInstance(100, 120, Image.SCALE_DEFAULT));
+                .getImage().getScaledInstance(25, 40, Image.SCALE_DEFAULT));
         JLabel imageLabel2 = new JLabel(imageIcon2);
-        teamList.add(imageLabel2);
-        refreshTeamList();
+        panel.add(imageLabel2);
+        mainPanel.add(panel);
+        refreshMainPanel();
     }
 
-    // TODO
-    // EFFECTS: prints the contract information for all players on the team
+    // EFFECTS: adds the contract information for all players on the team to mainPanel and refreshes mainPanel
+    // so changes are reflected to the user.
     private void viewAllPlayerContracts() {
-        teamList.removeAll();
+        mainPanel.removeAll();
+        JPanel summaryPanel = new JPanel();
         JLabel summary = new JLabel();
         for (Player player : team.getPlayers()) {
             viewPlayerContract(player);
         }
         summary.setText(team.getTeamName() + " has spent $" + team.getTeamSalary()
                 + " of the $" + team.getSalaryCap() + " " + team.getSport() + " salary cap.");
-        teamList.add(summary);
-        add(teamList);
-        refreshTeamList();
+        summaryPanel.add(summary);
+        mainPanel.add(summaryPanel, BorderLayout.SOUTH);
+        refreshMainPanel();
     }
 
-    // TODO
-    // EFFECTS: saves the team to file
+    // EFFECTS: saves the team to file. If file is not found, alerts the user.
     private void saveTeam() {
         try {
             jsonWriter.open();
             jsonWriter.write(team);
             jsonWriter.close();
-            System.out.println("Saved " + team.getTeamName() + " to " + JSON_STORE);
+            JOptionPane.showMessageDialog(null,
+                    "Saved " + team.getTeamName() + " to " + JSON_STORE,
+                    "Successful Save",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            JOptionPane.showMessageDialog(null,
+                    "Unable to write to file: " + JSON_STORE,
+                    "Unsuccessful Save",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // MODIFIES: this, TODO
-    // EFFECTS: loads team from file
+    // MODIFIES: this
+    // EFFECTS: loads team from file and displays the team on the mainPanel. If load was invalid,
+    // alerts user.
     private void loadTeam() {
         try {
             team = jsonReader.read();
             viewTeam();
-            refreshTeamList();
-            System.out.println("Loaded team " + team.getTeamName() + " from " + JSON_STORE);
+            refreshMainPanel();
+            JOptionPane.showMessageDialog(null,
+                    "Loaded team " + team.getTeamName() + " from " + JSON_STORE,
+                    "Successful Load", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            JOptionPane.showMessageDialog(null,
+                    "Unable to read from file: " + JSON_STORE,
+                    "Unsuccessful Load", JOptionPane.ERROR_MESSAGE);
         } catch (JSONException e) {
-            System.out.println("Could not load team from file: " + JSON_STORE + "\n");
+            JOptionPane.showMessageDialog(null,
+                    "Could not load team from file: " + JSON_STORE,
+                    "Unsuccessful Load", JOptionPane.ERROR_MESSAGE);
             initTeam();
         }
     }

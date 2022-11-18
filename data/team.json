@@ -10,11 +10,19 @@
         },
         {
             "contract": {
-                "salary": 1,
-                "years": 1
+                "salary": 100000,
+                "years": 12
             },
             "name": "player",
             "age": 1
+        },
+        {
+            "contract": {
+                "salary": 12,
+                "years": 12
+            },
+            "name": "carlos",
+            "age": 25
         }
     ],
     "name": "my team",
