@@ -55,7 +55,6 @@ public class SportsManagementApp extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        //addWindowListener(new RemindUserToSave());
     }
 
     void runSportsManager() {
@@ -104,6 +103,8 @@ public class SportsManagementApp extends JFrame {
             teamList.add(temp);
             teamList.add(viewContract);
         }
+        JLabel image = new JLabel(new ImageIcon("data/splashimage.jpg"));
+        teamList.add(image);
         add(teamList);
         refreshTeamList();
     }
@@ -111,6 +112,10 @@ public class SportsManagementApp extends JFrame {
     private void printPlayerContract(Player player) {
         teamList.removeAll();
         viewPlayerContract(player);
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("data/money.png")
+                .getImage().getScaledInstance(100, 120, Image.SCALE_DEFAULT));
+        JLabel imageLabel = new JLabel(imageIcon);
+        teamList.add(imageLabel);
         refreshTeamList();
     }
 
