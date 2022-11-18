@@ -19,10 +19,10 @@ public class SportsTeam implements Writable {
     public static final int FOOTBALL_SALARY_CAP = 208200000;
     public static final int BASKETBALL_SALARY_CAP = 134000000;
 
-    // REQUIRES: sport is one of "hockey", "football", or "basketball"
+    // REQUIRES: sport is one of "Hockey", "Football", or "Basketball"
     // MODIFIES: this
     // EFFECTS: initializes empty array of players, sets teamName, sets the salary cap based on which
-    // sport the team plays, and sets the sport variable to the full name of the users inputted sport.
+    // sport the team plays.
     public SportsTeam(String name, String sport) {
         players = new ArrayList<>();
         this.teamName = name;
