@@ -112,10 +112,6 @@ public class SportsManagementApp extends JFrame {
     private void printPlayerContract(Player player) {
         teamList.removeAll();
         viewPlayerContract(player);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("data/money.png")
-                .getImage().getScaledInstance(100, 120, Image.SCALE_DEFAULT));
-        JLabel imageLabel = new JLabel(imageIcon);
-        teamList.add(imageLabel);
         refreshTeamList();
     }
 
@@ -267,6 +263,10 @@ public class SportsManagementApp extends JFrame {
     // EFFECTS: prints the contract information of a player
     private void viewPlayerContract(Player player) {
         teamList.removeAll();
+        ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("data/money.png")
+                .getImage().getScaledInstance(100, 120, Image.SCALE_DEFAULT));
+        JLabel imageLabel1 = new JLabel(imageIcon1);
+        teamList.add(imageLabel1);
         JLabel temp = new JLabel();
         temp.setText(player.getName() + ": Salary: $" + player.getContract().getSalary()
                 + ", Years: " + player.getContract().getYears());
@@ -274,6 +274,10 @@ public class SportsManagementApp extends JFrame {
         extendContract.addActionListener(e -> extendPlayer(player));
         teamList.add(temp);
         teamList.add(extendContract);
+        ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("data/money.png")
+                .getImage().getScaledInstance(100, 120, Image.SCALE_DEFAULT));
+        JLabel imageLabel2 = new JLabel(imageIcon2);
+        teamList.add(imageLabel2);
         refreshTeamList();
     }
 
