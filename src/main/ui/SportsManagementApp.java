@@ -28,7 +28,7 @@ public class SportsManagementApp extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: runs the sports manager application by initializing fields and graphics
-    public SportsManagementApp() throws FileNotFoundException {
+    public SportsManagementApp() {
         initFields();
         initGraphics();
     }
@@ -112,7 +112,7 @@ public class SportsManagementApp extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates a new team with the teamName and sport .
+    // EFFECTS: creates a new team with the teamName and sport.
     private void createTeam(String teamName, String sport) {
         team = new SportsTeam(teamName, sport);
     }
@@ -280,6 +280,7 @@ public class SportsManagementApp extends JFrame {
         return salary;
     }
 
+    // MODIFIES: this
     // REQUIRES: player is not null
     // EFFECTS: adds the contract information of a player to the mainPanel and refreshes mainPanel
     // so changes are reflected to the user.
@@ -305,6 +306,7 @@ public class SportsManagementApp extends JFrame {
         refreshMainPanel();
     }
 
+    // MODIFIES: this
     // EFFECTS: adds the contract information for all players on the team to mainPanel and refreshes mainPanel
     // so changes are reflected to the user.
     private void viewAllPlayerContracts() {
@@ -365,6 +367,7 @@ public class SportsManagementApp extends JFrame {
         }
     }
 
+    // MODIFIES: this
     // Based on code from https://www.clear.rice.edu/comp310/JavaResources/frame_close.html
     // EFFECTS: Monitors when the close button is clicked and prompts the user to save their team when that occurs.
     @Override
