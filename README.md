@@ -28,8 +28,8 @@ team to a file and have the option to do so or not
 
 - You can generate the first required event related to adding players to a team by loading/creating a team and 
 clicking add player from the first page.
-- You can generate the second required event related to adding players to a team by clicking the view all 
-contracts button. This will display a more detailed view of all the players that have been added to the users team. 
+- You can generate the second required event related to adding players to a team by clicking the remove player button
+from the page showing the list of players on the users team. 
 - You can locate my visual component by clicking view contract of one player, or by clicking view all contracts.
 The images are the dollar signs beside each contract.
 - You can save the state of my application by clicking the save/load button in the top left corner and then 
