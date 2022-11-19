@@ -18,6 +18,7 @@ public class SportsManagementApp extends JFrame {
 
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 700;
+    private static final int GAP = 20;
 
     private static final String JSON_STORE = "./data/team.json";
     private SportsTeam team;
@@ -299,13 +300,16 @@ public class SportsManagementApp extends JFrame {
         mainPanel.removeAll();
         JPanel summaryPanel = new JPanel();
         JLabel summary = new JLabel();
+        JLabel gap = new JLabel();
         for (Player player : team.getPlayers()) {
             viewPlayerContract(player);
         }
+        gap.setPreferredSize(new Dimension(WIDTH, GAP));
+        summaryPanel.add(gap);
         summary.setText(team.getTeamName() + " has spent $" + team.getTeamSalary()
                 + " of the $" + team.getSalaryCap() + " " + team.getSport() + " salary cap.");
         summaryPanel.add(summary);
-        mainPanel.add(summaryPanel, BorderLayout.SOUTH);
+        mainPanel.add(summaryPanel, BorderLayout.PAGE_END);
         refreshMainPanel();
     }
 
