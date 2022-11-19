@@ -274,7 +274,7 @@ public class SportsManagementApp extends JFrame {
     private void viewPlayerContract(Player player) {
         JPanel panel = new JPanel();
         panel.setMaximumSize(new Dimension(WIDTH, 50));
-        ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("data/money.png")
+        ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("images/money.png")
                 .getImage().getScaledInstance(25, 40, Image.SCALE_DEFAULT));
         JLabel imageLabel1 = new JLabel(imageIcon1);
         panel.add(imageLabel1);
@@ -285,7 +285,7 @@ public class SportsManagementApp extends JFrame {
         extendContract.addActionListener(e -> extendPlayer(player));
         panel.add(temp);
         panel.add(extendContract);
-        ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("data/money.png")
+        ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("images/money.png")
                 .getImage().getScaledInstance(25, 40, Image.SCALE_DEFAULT));
         JLabel imageLabel2 = new JLabel(imageIcon2);
         panel.add(imageLabel2);
@@ -350,7 +350,9 @@ public class SportsManagementApp extends JFrame {
         }
     }
 
+    // Based on code from https://www.clear.rice.edu/comp310/JavaResources/frame_close.html
     // EFFECTS: Monitors when the close button is clicked and prompts the user to save their team when that occurs.
+    @Override
     protected void processWindowEvent(WindowEvent e) {
         super.processWindowEvent(e);
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
