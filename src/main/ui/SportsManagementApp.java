@@ -129,13 +129,24 @@ public class SportsManagementApp extends JFrame {
             tempPanel = new JPanel();
             tempPanel.setMaximumSize(new Dimension(WIDTH, 50));
             temp.setText("Name: " + player.getName() + ", Age: " + player.getAge());
+            tempPanel.add(temp);
             JButton viewContract = new JButton("View Contract");
             viewContract.addActionListener(e -> clearPanelAndViewContract(player));
-            tempPanel.add(temp);
             tempPanel.add(viewContract);
+            JButton removePlayer = new JButton("Remove Player");
+            removePlayer.addActionListener(e -> removePlayer(player));
+            tempPanel.add(removePlayer);
             mainPanel.add(tempPanel);
         }
         add(mainPanel);
+        refreshMainPanel();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: removes player from team and re-renders team on mainPanel
+    private void removePlayer(Player player) {
+        team.removePlayer(player);
+        viewTeam();
         refreshMainPanel();
     }
 

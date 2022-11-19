@@ -91,6 +91,27 @@ class SportsTeamTest {
     }
 
     @Test
+    void testRemovePlayer() {
+        assertTrue(hockeyTeam.addPlayer(player1));
+        assertTrue(hockeyTeam.addPlayer(player2));
+        assertTrue(hockeyTeam.addPlayer(player3));
+        assertEquals(3, hockeyTeam.getPlayers().size());
+        hockeyTeam.removePlayer(player3);
+        assertEquals(2, hockeyTeam.getPlayers().size());
+        assertFalse(hockeyTeam.getPlayers().contains(player3));
+    }
+
+    @Test
+    void testRemovePlayerPlayerNotOnTeam() {
+        assertTrue(hockeyTeam.addPlayer(player1));
+        assertTrue(hockeyTeam.addPlayer(player2));
+        assertTrue(hockeyTeam.addPlayer(player3));
+        assertEquals(3, hockeyTeam.getPlayers().size());
+        hockeyTeam.removePlayer(player4);
+        assertEquals(3, hockeyTeam.getPlayers().size());
+    }
+
+    @Test
     void testGetTeamSalary() {
         hockeyTeam.addPlayer(player1);
         assertEquals(100000, hockeyTeam.getTeamSalary());
@@ -103,5 +124,4 @@ class SportsTeamTest {
         hockeyTeam.getPlayers().get(0).getContract().extendContract(150000, 2);
         assertEquals(150000, hockeyTeam.getTeamSalary());
     }
-
 }

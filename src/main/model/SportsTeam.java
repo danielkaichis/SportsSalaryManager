@@ -53,6 +53,13 @@ public class SportsTeam implements Writable {
     }
 
     // MODIFIES: this
+    // EFFECTS: removes player from the team
+    public void removePlayer(Player player) {
+        players.remove(player);
+        this.teamSalary -= player.getContract().getSalary();
+    }
+
+    // MODIFIES: this
     // EFFECTS: calculates and returns the sum of the salaries of the players on the team. This calculation is done
     // each time this method is called in case contracts are extended in other classes
     public int getTeamSalary() {
