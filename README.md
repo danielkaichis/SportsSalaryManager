@@ -36,3 +36,19 @@ The images are the dollar signs beside each contract.
 clicking save, or by hiting the close button, where you will be prompted by a popup to save your team.
 - You can reload the state of my application by clicking yes to the first popup that prompts the user to load a team
 when the application starts, or at any time by clicking the save/load button and then clicking load from the main page.
+
+### Phase 4: Task 2
+Sample event log showing add and remove players from a team, and extending a players contract. When loading a team from
+file, all players already on the team are logged as "added" because the add player event is called every time add player
+is called, and add player is called for each player loaded in from the file.
+
+Wed Nov 30 17:43:08 PST 2022  
+Player DK added to Jets.  
+Wed Nov 30 17:43:24 PST 2022  
+Player Harry added to Jets.  
+Wed Nov 30 17:43:37 PST 2022  
+Player Johny added to Jets.  
+Wed Nov 30 17:43:50 PST 2022  
+Contract extended.  
+Wed Nov 30 17:43:55 PST 2022  
+Player Harry removed from Jets.  

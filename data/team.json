@@ -2,29 +2,21 @@
     "players": [
         {
             "contract": {
-                "salary": 100000,
-                "years": 12
-            },
-            "name": "player",
-            "age": 1
-        },
-        {
-            "contract": {
-                "salary": 500000,
-                "years": 15
-            },
-            "name": "DK",
-            "age": 25
-        },
-        {
-            "contract": {
-                "salary": 45000,
+                "salary": 123456,
                 "years": 5
             },
-            "name": "John",
-            "age": 24
+            "name": "DK",
+            "age": 20
+        },
+        {
+            "contract": {
+                "salary": 764532,
+                "years": 11
+            },
+            "name": "Johny",
+            "age": 34
         }
     ],
-    "name": "my team",
+    "name": "Jets",
     "sport": "Hockey"
 }

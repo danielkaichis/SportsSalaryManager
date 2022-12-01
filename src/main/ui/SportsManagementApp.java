@@ -1,6 +1,8 @@
 package ui;
 
 import model.Contract;
+import model.Event;
+import model.EventLog;
 import model.Player;
 import model.SportsTeam;
 import org.json.JSONException;
@@ -209,8 +211,8 @@ public class SportsManagementApp extends JFrame {
 
         Player player = new Player(nameInput.getText(), Integer.parseInt(ageInput.getText()), contract);
         if (!team.addPlayer(player)) {
-            String message = "Cannot add " + nameInput.getText() + " to the team."
-                    + nameInput.getText() + "'s contract puts team " + team.getTeamName() + " over the salary cap";
+            String message = "Cannot add " + nameInput.getText() + " to the team. "
+                    + nameInput.getText() + "'s contract puts " + team.getTeamName() + " over the salary cap";
             JOptionPane.showMessageDialog(null, message,
                     "Invalid Contract", JOptionPane.ERROR_MESSAGE);
         }
@@ -380,7 +382,16 @@ public class SportsManagementApp extends JFrame {
             if (exit == JOptionPane.YES_OPTION) {
                 saveTeam();
             }
+            printLog();
             System.exit(0);
+        }
+    }
+
+    // EFFECTS: prints all Events in EventLog to the console
+    public void printLog() {
+        EventLog log = EventLog.getInstance();
+        for (Event e : log) {
+            System.out.println(e.toString());
         }
     }
 }

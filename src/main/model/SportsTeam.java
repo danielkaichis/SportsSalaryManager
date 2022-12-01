@@ -46,6 +46,8 @@ public class SportsTeam implements Writable {
         if (!players.contains(newPlayer) && (this.teamSalary + newPlayer.getContract().getSalary()) <= salaryCap) {
             players.add(newPlayer);
             this.teamSalary += newPlayer.getContract().getSalary();
+            EventLog.getInstance().logEvent(new Event("Player " + newPlayer.getName()
+                    + " added to " + this.teamName + "."));
             return true;
         } else {
             return false;
@@ -53,10 +55,14 @@ public class SportsTeam implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: removes player from the team
+    // EFFECTS: if player is on the team, removes player from the team
     public void removePlayer(Player player) {
-        players.remove(player);
-        this.teamSalary -= player.getContract().getSalary();
+        if (players.contains(player)) {
+            players.remove(player);
+            this.teamSalary -= player.getContract().getSalary();
+            EventLog.getInstance().logEvent(new Event("Player " + player.getName()
+                    + " removed from "  + this.teamName + "."));
+        }
     }
 
     // MODIFIES: this

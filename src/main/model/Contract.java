@@ -21,6 +21,7 @@ public class Contract implements Writable {
     // EFFECTS: extends the length of the players contract by length and returns the new length
     public int extendContract(int length) {
         this.years += length;
+        EventLog.getInstance().logEvent(new Event("Contract extended."));
         return this.years;
     }
 
