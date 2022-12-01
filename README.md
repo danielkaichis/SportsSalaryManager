@@ -52,3 +52,18 @@ Wed Nov 30 17:43:50 PST 2022
 Contract extended.  
 Wed Nov 30 17:43:55 PST 2022  
 Player Harry removed from Jets.  
+
+### Phase 4: Task 3
+The main refactoring I would do is to improve cohesion. Currently, my SportsTeam class has two responsibilities, dealing
+with players, and dealing with salary information. I would add a new class that SportsTeam extends to move this 
+salary behaviour to its own class to improve the cohesion here. I would also implement a bidirectional relationship
+contract and player so that each contract is aware of the player that is attached to it. Currently, to extend or modify 
+a players contract, methods are called on the players contract object, and not on the player themselves. By implementing
+this relationship, it would make the relationship between a player and their contract more clear and mimic how contracts 
+are extended in real life, and would also improve the programs logging as currently it is impossible for the program to 
+report which players contract was extended since the class does not have access to this information. One final thing I 
+could do to improve cohesion is to create three new classes to handle json/persistence related tasks for each of 
+SportsTeam, Player, and Contract because all three of these classes currently have their own tasks of managing team, 
+player, and contract information, along with handling how to save each class to json. I feel that this behaviour is 
+separate enough for each class to extend their own persistence class that implements Writable in order to follow the 
+single responsibility principle.
