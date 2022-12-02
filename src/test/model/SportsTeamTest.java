@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 // Test for all methods in the SportsTeam class, also includes fields to effectively test these methods
@@ -28,6 +31,7 @@ class SportsTeamTest {
         player2 = new Player("Player2", 26, contract);
         player3 = new Player("Player3", 27, contract);
         player4 = new Player("Player 4", 30, maxContract);
+        EventLog.getInstance().clear();
     }
 
     @Test
@@ -58,10 +62,38 @@ class SportsTeamTest {
     }
 
     @Test
+    void testAddPlayerLog() {
+        hockeyTeam.addPlayer(player1);
+        List<Event> l = new ArrayList<>();
+        EventLog el = EventLog.getInstance();
+
+        for (Event next : el) {
+            l.add(next);
+        }
+        assertEquals("Event log cleared.", l.get(0).getDescription());
+        assertEquals("Player Player1 added to Test team.", l.get(1).getDescription());
+    }
+
+    @Test
     void testAddPlayerDuplicatePlayer() {
         assertTrue(hockeyTeam.addPlayer(player1));
         assertFalse(hockeyTeam.addPlayer(player1));
         assertEquals(1, hockeyTeam.getPlayers().size());
+    }
+
+    @Test
+    void testAddPlayerLogDuplicatePlayer() {
+        hockeyTeam.addPlayer(player1);
+        hockeyTeam.addPlayer(player1);
+        List<Event> l = new ArrayList<>();
+        EventLog el = EventLog.getInstance();
+
+        for (Event next : el) {
+            l.add(next);
+        }
+        assertEquals("Event log cleared.", l.get(0).getDescription());
+        assertEquals("Player Player1 added to Test team.", l.get(1).getDescription());
+        assertEquals(2, l.size());
     }
 
     @Test
@@ -74,6 +106,24 @@ class SportsTeamTest {
         assertEquals(player1, hockeyTeam.getPlayers().get(0));
         assertEquals(player2, hockeyTeam.getPlayers().get(1));
         assertEquals(player3, hockeyTeam.getPlayers().get(2));
+    }
+
+    @Test
+    void testAddPlayerLogMultiplePlayers() {
+        hockeyTeam.addPlayer(player1);
+        hockeyTeam.addPlayer(player2);
+        hockeyTeam.addPlayer(player3);
+
+        List<Event> l = new ArrayList<>();
+        EventLog el = EventLog.getInstance();
+
+        for (Event next : el) {
+            l.add(next);
+        }
+        assertEquals("Event log cleared.", l.get(0).getDescription());
+        assertEquals("Player Player1 added to Test team.", l.get(1).getDescription());
+        assertEquals("Player Player2 added to Test team.", l.get(2).getDescription());
+        assertEquals("Player Player3 added to Test team.", l.get(3).getDescription());
     }
 
     @Test
@@ -99,6 +149,22 @@ class SportsTeamTest {
         hockeyTeam.removePlayer(player3);
         assertEquals(2, hockeyTeam.getPlayers().size());
         assertFalse(hockeyTeam.getPlayers().contains(player3));
+    }
+
+    @Test
+    void testRemovePlayerLog() {
+        hockeyTeam.addPlayer(player1);
+        hockeyTeam.removePlayer(player1);
+
+        List<Event> l = new ArrayList<>();
+        EventLog el = EventLog.getInstance();
+
+        for (Event next : el) {
+            l.add(next);
+        }
+        assertEquals("Event log cleared.", l.get(0).getDescription());
+        assertEquals("Player Player1 added to Test team.", l.get(1).getDescription());
+        assertEquals("Player Player1 removed from Test team.", l.get(2).getDescription());
     }
 
     @Test
