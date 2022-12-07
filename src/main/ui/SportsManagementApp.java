@@ -90,7 +90,7 @@ public class SportsManagementApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: if user chooses to load from file, loads team from file,
     // otherwise gets team information from the user and initializes team.
-    void initTeam() {
+    private void initTeam() {
         int loadTeam = JOptionPane.showConfirmDialog(null,
                 "Would you like to load your team?");
 
