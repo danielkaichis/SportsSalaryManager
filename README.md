@@ -5,7 +5,7 @@
 This project is a system for tracking players payroll information on a sports team. It lets users specify a sport and 
 enter information (personal and payroll information) about the players on their team. It supports different sports
 including hockey, basketball, and football, and will allow users to display information about player contracts and 
-salary cap hits. The application contains full unit test for all non UI methods and 100% code coverage. Event logging 
+salary cap hits. The application contains full unit tests for all non UI methods and 100% code coverage. Event logging 
 has also been implemented for key user actions including adding and removing players.
 
 ## Basic User Stories
